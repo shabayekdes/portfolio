@@ -12,7 +12,61 @@
 		initowlCarousel();
 		initOpenSource();
 		initNav();
+		initDesignLightbox();
 	});
+
+
+/* --------------------------------------------------
+	Design Background lightbox
+-------------------------------------------------- */
+
+	function initDesignLightbox () {
+		var box = $('#design-lightbox');
+		if (!box.length) return;
+		// One entry per design, taken from the first (visible) copy of the first row
+		var items = $('.marquee-row').first().find('.design-tile:not([aria-hidden])').map(function(){
+			return {
+				src: $(this).find('img').attr('src'),
+				title: $(this).find('strong').text(),
+				kind: $(this).find('em').text()
+			};
+		}).get();
+		var current = 0, lastFocus = null;
+
+		function show (i) {
+			current = (i + items.length) % items.length;
+			var item = items[current];
+			box.find('img').attr({src: item.src, alt: item.title + ' – ' + item.kind});
+			box.find('figcaption strong').text(item.title);
+			box.find('figcaption em').text(item.kind);
+		}
+		function open (i) {
+			lastFocus = document.activeElement;
+			show(i);
+			box.prop('hidden', false);
+			requestAnimationFrame(function(){ box.addClass('open'); });
+			$('body').css('overflow', 'hidden');
+			box.find('.lightbox-close').trigger('focus');
+		}
+		function close () {
+			box.removeClass('open');
+			setTimeout(function(){ box.prop('hidden', true); }, 250);
+			$('body').css('overflow', '');
+			if (lastFocus) lastFocus.focus();
+		}
+
+		$('.design-tile').on('click', function(){ open(+$(this).data('index')); });
+		box.find('.lightbox-close').on('click', close);
+		box.find('.lightbox-prev').on('click', function(){ show(current - 1); });
+		box.find('.lightbox-next').on('click', function(){ show(current + 1); });
+		box.on('click', function(e){ if (e.target === this) close(); });
+		$(document).on('keydown', function(e){
+			if (box.prop('hidden')) return;
+			if (e.key === 'Escape') close();
+			if (e.key === 'ArrowLeft') show(current - 1);
+			if (e.key === 'ArrowRight') show(current + 1);
+		});
+	}
 
 
 /* --------------------------------------------------
