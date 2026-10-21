@@ -854,3 +854,54 @@ header .main-header{z-index: 3;padding-top: 70px;}
 @media(max-width:767px) {
 	.box-contact .row > div{width: 100%;}
 }
+
+/* ---------------------------------------------------------------------------- */
+/* Impact in Numbers (dark band) + Testimonials                                  */
+/* ---------------------------------------------------------------------------- */
+.box-content.box-impact{--section-bg: #1D2027;background: radial-gradient(circle at 88% 0%, rgba(var(--primary-rgb), .55), transparent 45%), var(--section-bg);}
+.box-impact .heading h2{color: #fff;}
+.box-impact hr.line{border-top-color: var(--primary-light);}
+.box-impact .heading .intro{color: rgba(255, 255, 255, .65);}
+.box-impact .heading-icon{color: var(--primary-light);background: rgba(255, 255, 255, .08);}
+.impact-grid{display: grid;grid-template-columns: 1.3fr 1fr 1fr;gap: 20px;}
+.impact-item{display: flex;flex-direction: column;justify-content: center;}
+.impact-item.impact-feature{grid-row: span 2;padding: 36px 32px;background: linear-gradient(150deg, rgba(var(--primary-rgb), .45), rgba(255, 255, 255, .03) 70%);border-color: rgba(45, 212, 191, .25);}
+.impact-feature-icon{font-size: 26px;color: var(--primary-light);margin-bottom: 14px;}
+.impact-feature .impact-value{font-size: 72px;}
+.impact-feature .impact-label{max-width: 280px;margin: 8px auto 0;font-size: 17px;}
+.impact-breakdown{display: flex;justify-content: center;gap: 40px;margin-top: 24px;padding-top: 20px;border-top: 1px solid rgba(255, 255, 255, .12);font-size: 14px;color: rgba(255, 255, 255, .75);}
+.impact-breakdown strong{display: block;font-family: Montserrat,sans-serif;font-size: 26px;color: #fff;}
+.impact-note{margin-top: 10px;font-size: 11px;letter-spacing: 2px;text-transform: uppercase;color: var(--primary-light);}
+.impact-item{padding: 28px 24px;text-align: center;background: rgba(255, 255, 255, .04);border: 1px solid rgba(255, 255, 255, .08);border-radius: 14px;transition: border-color .2s ease, transform .2s ease;}
+.impact-item:hover{border-color: rgba(45, 212, 191, .4);transform: translateY(-3px);}
+.impact-value{font-family: Montserrat,sans-serif;font-size: 44px;font-weight: 800;line-height: 1.1;color: #fff;}
+.impact-label{margin-top: 8px;font-size: 15px;color: rgba(255, 255, 255, .8);}
+@media(max-width:991px) {
+	.impact-grid{grid-template-columns: repeat(2, 1fr);}
+	.impact-item.impact-feature{grid-row: auto;grid-column: span 2;}
+	.impact-value{font-size: 36px;}
+	.impact-feature .impact-value{font-size: 56px;}
+}
+@media(max-width:480px) {
+	.impact-grid{gap: 12px;}
+	.impact-item{padding: 20px 12px;}
+	.impact-value{font-size: 28px;}
+	.impact-label{font-size: 13px;}
+	.impact-item.impact-feature{padding: 26px 22px;}
+	.impact-feature .impact-value{font-size: 48px;}
+}
+
+.testimonial-grid{display: grid;grid-template-columns: repeat(2, 1fr);gap: 24px;margin-bottom: 20px;}
+.testimonial-card{position: relative;display: flex;flex-direction: column;margin: 0;padding: 32px;background: #fff;border: 1px solid #e5e7eb;border-radius: 14px;box-shadow: 0 8px 24px rgba(0, 0, 0, .04);}
+.testimonial-mark{font-size: 28px;color: var(--primary);opacity: .35;}
+.testimonial-card blockquote{flex: 1;margin: 12px 0 20px;padding: 0;font-size: 16px;line-height: 1.7;color: var(--text-body);border: none;}
+.testimonial-card figcaption{display: flex;align-items: center;gap: 12px;}
+.testimonial-avatar{display: flex;flex: none;align-items: center;justify-content: center;width: 44px;height: 44px;font-family: Montserrat,sans-serif;font-weight: 700;color: #fff;background: linear-gradient(135deg, var(--primary), var(--primary-dark));border-radius: 50%;}
+.testimonial-card figcaption a{display: block;font-family: Montserrat,sans-serif;font-weight: 700;color: #2b2d3f;}
+.testimonial-card figcaption em{font-style: normal;font-size: 13px;color: var(--text-muted);}
+.box-testimonials .btn i.fab{padding: 0 6px 0 0;}
+@media(max-width:767px) {
+	.testimonial-grid{grid-template-columns: 1fr;}
+	.testimonial-card{padding: 24px;}
+}
+#impact .heading .intro, #testimonials .heading .intro{max-width: 520px;}

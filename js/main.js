@@ -13,7 +13,48 @@
 		initOpenSource();
 		initNav();
 		initDesignLightbox();
+		initCountUp();
 	});
+
+
+/* --------------------------------------------------
+	Impact numbers: count up when scrolled into view
+-------------------------------------------------- */
+
+	function initCountUp () {
+		var els = $('[data-count]');
+		if (!els.length || !('IntersectionObserver' in window)) return;
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+		function run (el) {
+			var target = parseFloat(el.getAttribute('data-count'));
+			var decimals = (el.getAttribute('data-count').split('.')[1] || '').length;
+			var start = null, duration = 1600;
+			function step (t) {
+				if (!start) start = t;
+				var p = Math.min((t - start) / duration, 1);
+				var eased = 1 - Math.pow(1 - p, 3);
+				el.textContent = format(target * eased);
+				if (p < 1) requestAnimationFrame(step);
+			}
+			function format (n) {
+				return n.toLocaleString('en-US', {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
+			}
+			requestAnimationFrame(step);
+			// Always land on the exact value, even if frames are throttled (background tab, slow device)
+			setTimeout(function(){ el.textContent = format(target); }, duration + 100);
+		}
+
+		var observer = new IntersectionObserver(function(entries){
+			entries.forEach(function(entry){
+				if (entry.isIntersecting) {
+					run(entry.target);
+					observer.unobserve(entry.target);
+				}
+			});
+		}, {threshold: .6});
+		els.each(function(){ observer.observe(this); });
+	}
 
 
 /* --------------------------------------------------
