@@ -9,7 +9,7 @@
 		initResize();
 		initScroller();
 		initAnimation();
-		initowlCarousel();
+		initTimeline();
 		initOpenSource();
 		initNav();
 		initDesignLightbox();
@@ -112,9 +112,10 @@
 -------------------------------------------------- */
 
 	function initScroller () {
-		$('#scroll-page-content').localScroll({
-           target:'#page-content'
-        });
+		$('#scroll-page-content a').on('click', function(e){
+			e.preventDefault();
+			$('html, body').stop().animate({scrollTop: $('#page-content').offset().top - $('#menu').outerHeight() + 1}, 600);
+		});
 		$('.footer-top').on('click', function(e){
 			e.preventDefault();
 			$('html, body').stop().animate({scrollTop: 0}, 600);
@@ -133,18 +134,18 @@
 
 	
 /* --------------------------------------------------
-	Owl Carusel
+	Experience: collapse earlier roles
 -------------------------------------------------- */
 
-	function initowlCarousel () {
-		$("#owl-branding").owlCarousel({
-			autoPlay: 3000,
-			items : 5,
-			itemsDesktop : [1199,4],
-			itemsDesktopSmall : [979,3],
-			itemsTablet : [768, 2],
-			itemsMobile : [479, 2],
-			navigation: false,
+	function initTimeline () {
+		var timeline = $('.cbp_tmtimeline');
+		var toggle = $('.timeline-toggle');
+		if (!timeline.find('li.is-older').length) return;
+		timeline.addClass('is-collapsed');
+		toggle.prop('hidden', false).on('click', function(){
+			var expanded = timeline.toggleClass('is-collapsed').hasClass('is-collapsed') === false;
+			toggle.attr('aria-expanded', expanded)
+				.contents().first()[0].textContent = expanded ? 'Hide earlier roles ' : 'Show earlier roles (2018 – 2021) ';
 		});
 	}
 
@@ -199,8 +200,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	  strings: [
 		"<b>a Tech Lead</b>",
 		"<b>an Engineering Manager</b>",
-		"<b>a Backend Architect</b>",
-		"<b>a Problem Solver</b>"
+		"<b>a Backend Architect</b>"
 	  ],
 	  typeSpeed: 100,
 	  backSpeed: 0,
