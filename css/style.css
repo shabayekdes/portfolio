@@ -775,3 +775,20 @@ header .main-header{z-index: 3;padding-top: 70px;}
 @media(max-width:1439px) {
 	#menu ul.nav li.nav-cta{display: none;}
 }
+
+/* ---------------------------------------------------------------------------- */
+/* Section dividers: one big wave in the section's own colour, curving into the next */
+/* ---------------------------------------------------------------------------- */
+.box-content{--section-bg: #fff;--wave-height: 100px;position: relative;background-color: var(--section-bg);}
+.box-content.box-style-2{--section-bg: #ECECEC;}
+.box-content.box-6{border: none;}
+.box-content:not(.box-style-3):not(:last-child)::after,
+.box-content.wave-up::before{content: "";position: absolute;left: 0;right: 0;z-index: 2;width: auto;height: var(--wave-height);visibility: visible;clear: none;background: var(--section-bg);pointer-events: none;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V20C1100 140 340-40 0 80Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V20C1100 140 340-40 0 80Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;}
+.box-content:not(.box-style-3):not(:last-child)::after{top: 100%;margin-top: -1px;}
+/* The quote banner is a photo, so the section after it curves up into it instead */
+.box-content.wave-up::before{bottom: 100%;margin-bottom: -1px;transform: rotate(180deg);}
+@media(max-width:767px) {
+	.box-content{--wave-height: 50px;}
+}
