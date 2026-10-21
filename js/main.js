@@ -105,10 +105,10 @@
 document.addEventListener("DOMContentLoaded", function() {
 	new Typed("#typed", {
 	  strings: [
-		"<b>Dreamer</b>",
-		"<b>Designer</b>",
-		"<b>Developer</b>",
-		"<b>Dreamer</b>"
+		"<b>a Tech Lead</b>",
+		"<b>an Engineering Manager</b>",
+		"<b>a Backend Architect</b>",
+		"<b>a Problem Solver</b>"
 	  ],
 	  typeSpeed: 100,
 	  backSpeed: 0,
