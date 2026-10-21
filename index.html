@@ -20,7 +20,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	
 	<!-- Custom CSS -->
-	<link href="css/style.css?v=20" rel="stylesheet">
+	<link href="css/style.css?v=22" rel="stylesheet">
 	
 	<!-- Animate.css -->
 	<link href="css/animate.css" rel="stylesheet" media="all" type="text/css">
@@ -48,6 +48,8 @@
 	<header>
 		<!---Main Header--->
 		<div class="main-header">
+			<!-- Animated background: drifting glow shapes over a faint dot grid -->
+			<div class="hero-bg" aria-hidden="true"><span class="hero-blob blob-1"></span><span class="hero-blob blob-2"></span><span class="hero-blob blob-3"></span></div>
 
 			<!--Navigation-->
 			<nav id="menu" class="navbar">
@@ -79,7 +81,7 @@
 					<p class="header-lead">I build and scale SaaS platforms, and the engineering teams behind them, across backend, web, and mobile.</p>
 					<div class="header-cta">
 						<a class="btn btn-skin" href="files/Esmail-Shabayek-CV.pdf" download><i class="fa fa-download"></i> Download CV</a>
-						<a class="btn btn-ghost" href="mailto:esmail.shabayek@gmail.com"><i class="fa fa-envelope"></i> Contact me</a>
+						<a class="btn btn-ghost" href="#contact">Contact me <i class="fa fa-arrow-right btn-arrow"></i></a>
 					</div>
 					<ul class="header-stats list-inline">
 						<li><strong>8+</strong> years experience</li>
@@ -90,10 +92,9 @@
 			</div><!-- /header-text -->
 			<!---Scroller--->
 			<div id="scroll-page-content">
-				<a href="#page-content" class="scroller">
-					<div class="scroller-button">
-						<i class="fa fa-angle-down"></i>
-					</div>
+				<a href="#page-content" class="scroll-indicator" aria-label="Scroll to content">
+					<span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+					<span class="scroll-label">Scroll</span>
 				</a>
 			</div>
 		</div>
@@ -847,7 +848,7 @@
 	<script src="owl-carousel/owl.carousel.js"></script>
 	
 	<!-- Definity JS -->
-	<script src="js/main.js?v=4"></script>
+	<script src="js/main.js?v=5"></script>
 	
 </div>
 </body>

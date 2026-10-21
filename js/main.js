@@ -93,7 +93,7 @@
 			current.parent().addClass('active');
 		}
 
-		links.on('click', function(e){
+		links.add('.header-cta a[href^="#"]').on('click', function(e){
 			var target = $($(this).attr('href'));
 			if (!target.length) return;
 			e.preventDefault();
@@ -172,6 +172,7 @@
 		var header = $(".header-text");
 		$(window).scroll(function() {
 			var scroll = $(window).scrollTop();
+			$('#scroll-page-content').toggleClass('is-hidden', scroll > 50);
 			if ($(".index-page").length > 0) {
 				if (scroll >= 270) {
 					header.addClass("remove");
