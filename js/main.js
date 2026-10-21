@@ -43,15 +43,6 @@
 -------------------------------------------------- */
 
 	function initowlCarousel () {
-		$("#owl-blog").owlCarousel({
-			autoPlay: 3000,
-			items : 3,
-			itemsDesktop : [1199,3],
-			itemsDesktopSmall : [979,2],
-			itemsTablet : [768, 1],
-			itemsMobile : [479, 1],
-			navigation: false,
-		});
 		$("#owl-branding").owlCarousel({
 			autoPlay: 3000,
 			items : 5,
