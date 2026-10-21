@@ -10,8 +10,47 @@
 		initScroller();
 		initAnimation();
 		initowlCarousel();
-		initContactAjax();
+		initOpenSource();
+		initNav();
 	});
+
+
+/* --------------------------------------------------
+	Fixed Nav
+-------------------------------------------------- */
+
+	function initNav () {
+		var menu = $('#menu');
+		var links = menu.find('.nav li:not(.nav-cta) a[href^="#"]');
+
+		function update () {
+			var scroll = $(window).scrollTop();
+			menu.toggleClass('at-top', scroll <= 50);
+
+			// Highlight the last section whose top has passed under the nav.
+			var current = links.first();
+			links.each(function(){
+				var target = $($(this).attr('href'));
+				if (target.length && target.offset().top - menu.outerHeight() - 10 <= scroll) {
+					current = $(this);
+				}
+			});
+			links.parent().removeClass('active');
+			current.parent().addClass('active');
+		}
+
+		links.on('click', function(e){
+			var target = $($(this).attr('href'));
+			if (!target.length) return;
+			e.preventDefault();
+			var top = $(this).attr('href') === '#page-top' ? 0 : target.offset().top - menu.outerHeight() + 1;
+			$('html, body').stop().animate({scrollTop: top}, 600);
+			menu.find('.navbar-collapse.in').collapse('hide');
+		});
+
+		$(window).on('scroll resize', update);
+		update();
+	}
 
 
 /* --------------------------------------------------
@@ -51,6 +90,22 @@
 			itemsTablet : [768, 2],
 			itemsMobile : [479, 2],
 			navigation: false,
+		});
+	}
+
+/* --------------------------------------------------
+	Open Source stats (live from Packagist)
+-------------------------------------------------- */
+
+	function initOpenSource () {
+		$('.oss-card[data-package]').each(function(){
+			var card = $(this);
+			$.getJSON('https://packagist.org/packages/' + card.data('package') + '.json', function(data){
+				var installs = data.package.downloads.total;
+				// Only show install counts once they're meaningful.
+				card.find('[data-stat="downloads"]').text(installs.toLocaleString('en-US')).parent().toggle(installs >= 100);
+				card.find('[data-stat="stars"]').text(data.package.github_stars);
+			});
 		});
 	}
 

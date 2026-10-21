@@ -12,7 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	
 	<!-- Custom CSS -->
-	<link href="css/style.css" rel="stylesheet">
+	<link href="css/style.css?v=3" rel="stylesheet">
 	
 	<!-- Animate.css -->
 	<link href="css/animate.css" rel="stylesheet" media="all" type="text/css">
@@ -50,12 +50,15 @@
 					</div>
 					<div class="collapse navbar-collapse navbar-ex1-collapse">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#">Home</a></li>
+							<li class="active"><a href="#page-top">Home</a></li>
 							<li><a href="#about">About</a></li>
 							<li><a href="#experience">Experience</a></li>
 							<li><a href="#project">Projects</a></li>
 							<li><a href="#skills">Skills</a></li>
+							<li><a href="#open-source">Open Source</a></li>
 							<li><a href="#work">Design</a></li>
+							<li><a href="#contact">Contact</a></li>
+							<li class="nav-cta"><a href="files/Esmail-Shabayek-CV.pdf" download><i class="fa fa-download"></i> CV</a></li>
 						</ul>
 					</div>
 				</div>
@@ -298,7 +301,7 @@
 				<div class="heading wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
 					<h2>Latest Projects</h2>
 					<hr class="line">
-					<div class="intro">Selected products and open-source packages</div>
+					<div class="intro">Selected products I have built and led</div>
 				</div>
 				<div class="content">
 					<div class="row project-grid">
@@ -334,35 +337,71 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-6 item">
-							<div class="box-item">
-								<div class="project-cover"><i class="fa fa-credit-card"></i></div>
-								<div class="content">
-									<h3><a href="https://packagist.org/packages/shabayek/laravel-payment">Laravel Payment Gateway</a></h3>
-									<p>Unit-tested open-source Laravel package for payment gateway integration.</p>
-									<span>Open source · PHP</span><br>
-									<a class="btn btn-skin" href="https://packagist.org/packages/shabayek/laravel-payment">View Project</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-6 item">
-							<div class="box-item">
-								<div class="project-cover"><i class="fa fa-sms"></i></div>
-								<div class="content">
-									<h3><a href="https://packagist.org/packages/shabayek/laravel-sms">Laravel SMS Gateway</a></h3>
-									<p>Open-source Laravel package supporting multiple SMS providers.</p>
-									<span>Open source · PHP</span><br>
-									<a class="btn btn-skin" href="https://packagist.org/packages/shabayek/laravel-sms">View Project</a>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
+		<!-- ////////////Open Source -->
+		<section class="box-content box-oss box-style-2" id="open-source">
+			<div class="container">
+				<div class="heading wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
+					<h2>Open Source</h2>
+					<hr class="line">
+					<div class="intro">Packages and developer tools I maintain</div>
+				</div>
+				<div class="row oss-grid wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
+					<div class="col-md-4 col-sm-6">
+						<div class="oss-card">
+							<h3><i class="fab fa-github"></i> <a href="https://github.com/shabayekdes/cloudkit-cli">cloudkit-cli</a></h3>
+							<p>Shell helpers for AWS and Google Cloud: interactive session management with SSO and chained profiles, service wrappers, and a color-coded prompt across both clouds.</p>
+							<ul class="oss-stats list-inline">
+								<li><i class="fa fa-terminal"></i> <strong>Shell</strong></li>
+								<li><i class="fa fa-cloud"></i> <strong>AWS · GCloud</strong></li>
+							</ul>
+							<code>source cloudkit-cli/main.sh</code>
+							<div class="oss-links">
+								<a class="btn btn-skin" href="https://github.com/shabayekdes/cloudkit-cli">GitHub</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="oss-card" data-package="shabayek/laravel-sms">
+							<h3><i class="fab fa-github"></i> <a href="https://github.com/shabayekdes/laravel-sms">laravel-sms</a></h3>
+							<p>Open-source Laravel package for sending SMS through multiple providers behind one clean API.</p>
+							<ul class="oss-stats list-inline">
+								<li><i class="fa fa-download"></i> <strong data-stat="downloads">1,993</strong> installs</li>
+								<li><i class="fa fa-star"></i> <strong data-stat="stars">2</strong> stars</li>
+							</ul>
+							<code>composer require shabayek/laravel-sms</code>
+							<div class="oss-links">
+								<a class="btn btn-skin" href="https://github.com/shabayekdes/laravel-sms">GitHub</a>
+								<a class="btn btn-ghost-dark" href="https://packagist.org/packages/shabayek/laravel-sms">Packagist</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="oss-card" data-package="shabayek/laravel-payment">
+							<h3><i class="fab fa-github"></i> <a href="https://github.com/shabayekdes/laravel-payment">laravel-payment</a></h3>
+							<p>Unit-tested open-source Laravel package for payment gateway integration.</p>
+							<ul class="oss-stats list-inline">
+								<li style="display:none"><i class="fa fa-download"></i> <strong data-stat="downloads">15</strong> installs</li>
+								<li><i class="fa fa-star"></i> <strong data-stat="stars">3</strong> stars</li>
+							</ul>
+							<code>composer require shabayek/laravel-payment</code>
+							<div class="oss-links">
+								<a class="btn btn-skin" href="https://github.com/shabayekdes/laravel-payment">GitHub</a>
+								<a class="btn btn-ghost-dark" href="https://packagist.org/packages/shabayek/laravel-payment">Packagist</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="text-center"><a href="https://github.com/shabayekdes" class="btn btn-skin"><i class="fab fa-github"></i> More on GitHub</a></div>
+			</div>
+		</section>
+
 		<!-- ////////////Content Box 04 -->
-		<section class="box-content box-4 box-style-2" id="skills">
+		<section class="box-content box-4" id="skills">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-5">
@@ -639,6 +678,45 @@
 			</div>
 		</section>
 		
+
+		<!-- ////////////Contact -->
+		<section class="box-content box-contact" id="contact">
+			<div class="container">
+				<div class="heading wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
+					<h2>Get In Touch</h2>
+					<hr class="line">
+					<div class="intro">Hiring for an engineering leadership role, or building a platform that needs to scale? Let’s talk.</div>
+				</div>
+				<div class="row wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
+					<div class="col-sm-4">
+						<a class="contact-card" href="mailto:esmail.shabayek@gmail.com">
+							<i class="fa fa-envelope"></i>
+							<h3>Email</h3>
+							<p>esmail.shabayek@gmail.com</p>
+						</a>
+					</div>
+					<div class="col-sm-4">
+						<a class="contact-card" href="https://www.linkedin.com/in/shabayekdes/">
+							<i class="fab fa-linkedin-in"></i>
+							<h3>LinkedIn</h3>
+							<p>in/shabayekdes</p>
+						</a>
+					</div>
+					<div class="col-sm-4">
+						<div class="contact-card">
+							<i class="fa fa-map-marker-alt"></i>
+							<h3>Maadi, Cairo</h3>
+							<p>Remote experience across Saudi Arabia &amp; UAE</p>
+						</div>
+					</div>
+				</div>
+				<div class="text-center contact-cta">
+					<a class="btn btn-skin" href="mailto:esmail.shabayek@gmail.com"><i class="fa fa-paper-plane"></i> Email me</a>
+					<a class="btn btn-ghost-dark" href="files/Esmail-Shabayek-CV.pdf" download><i class="fa fa-download"></i> Download CV</a>
+				</div>
+			</div>
+		</section>
+
 	</section>
 
 	<!--////////////////////////////////////Footer-->
@@ -726,7 +804,7 @@
 	<script src="owl-carousel/owl.carousel.js"></script>
 	
 	<!-- Definity JS -->
-	<script src="js/main.js"></script>
+	<script src="js/main.js?v=2"></script>
 	
 </div>
 </body>
