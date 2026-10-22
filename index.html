@@ -74,7 +74,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	
 	<!-- Custom CSS -->
-	<link href="css/style.css?v=29" rel="stylesheet">
+	<link href="css/style.css?v=30" rel="stylesheet">
 	
 	<!-- Animate.css -->
 	<link href="css/animate.css" rel="stylesheet" media="all" type="text/css">
@@ -475,8 +475,10 @@
 					<div class="intro">Selected products I have built and led</div>
 				</div>
 				<div class="content">
-					<div class="row project-grid">
-						<div class="col-md-4 col-sm-6 item">
+					<div class="project-slider">
+					<button type="button" class="slider-arrow" data-dir="-1" aria-label="Previous projects"><i class="fa fa-chevron-left"></i></button>
+					<div class="project-grid project-track" tabindex="0" aria-label="Projects">
+						<div class="item">
 							<div class="box-item">
 								<div class="project-media">
 									<div class="device-phone">
@@ -491,7 +493,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-6 item">
+						<div class="item">
 							<div class="box-item">
 								<div class="project-media">
 									<div class="device-browser">
@@ -507,7 +509,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-6 item">
+						<div class="item">
 							<div class="box-item">
 								<div class="project-media">
 									<div class="device-browser">
@@ -523,6 +525,24 @@
 								</div>
 							</div>
 						</div>
+						<div class="item">
+							<div class="box-item">
+								<div class="project-media">
+									<div class="device-browser">
+										<div class="browser-bar"><i></i><i></i><i></i><span>minisouq</span></div>
+										<img src="images/projects/minisouq.jpg" alt="MiniSouq store homepage" loading="lazy">
+									</div>
+								</div>
+								<div class="content">
+									<h3><img class="project-icon" src="images/projects/minisouq-icon.png" alt=""><a href="https://github.com/shabayekdes/mini-souq">MiniSouq</a></h3>
+									<p>Solo e-commerce store built during the ALX Software Engineering programme, with product catalog and categories, search, shopping cart and checkout, and email or GitHub sign-in. Containerised with Docker and deployed on Railway.</p>
+									<span class="project-tags">Django · PostgreSQL · Docker</span>
+									<a class="project-link" href="https://github.com/shabayekdes/mini-souq">View on GitHub <i class="fa fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="slider-arrow" data-dir="1" aria-label="Next projects"><i class="fa fa-chevron-right"></i></button>
 					</div>
 				</div>
 			</div>
@@ -997,7 +1017,7 @@
 	
 	<!-- Definity JS -->
 	<script src="js/typed.js"></script>
-	<script src="js/main.js?v=11"></script>
+	<script src="js/main.js?v=12"></script>
 	
 </div>
 </body>

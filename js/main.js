@@ -14,18 +14,16 @@
 		initNav();
 		initDesignLightbox();
 		initCountUp();
-		initTestimonials();
+		$('.testimonial-track, .project-track').each(function(){ initSlider(this); });
 	});
 
 
 /* --------------------------------------------------
-	Testimonials slider: native scroll-snap, buttons and dots page through it
+	Sliders (testimonials, projects): native scroll-snap, arrows and optional dots page through it
 -------------------------------------------------- */
 
-	function initTestimonials () {
-		var track = document.querySelector('.testimonial-track');
-		if (!track) return;
-		var slider = track.closest('.testimonial-slider');
+	function initSlider (track) {
+		var slider = $(track).closest('.testimonial-slider, .project-slider')[0];
 		var dots = slider.querySelector('.testimonial-dots');
 		var prev = slider.querySelector('[data-dir="-1"]');
 		var next = slider.querySelector('[data-dir="1"]');
@@ -47,6 +45,7 @@
 		}
 
 		function buildDots () {
+			if (!dots) return update();
 			dots.innerHTML = '';
 			for (var i = 0; i < pageCount(); i++) {
 				var b = document.createElement('button');
@@ -60,7 +59,7 @@
 
 		function update () {
 			var page = currentPage();
-			$(dots).children().each(function (i) { $(this).toggleClass('active', i === page); });
+			if (dots) $(dots).children().each(function (i) { $(this).toggleClass('active', i === page); });
 			prev.disabled = page === 0;
 			next.disabled = page >= pageCount() - 1;
 		}
