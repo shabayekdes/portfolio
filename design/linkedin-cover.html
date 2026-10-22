@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@300;400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+	:root{--primary:#0F766E;--primary-rgb:15,118,110;--primary-light:#2DD4BF;}
+	*{box-sizing:border-box;margin:0;padding:0;}
+	html,body{width:1584px;height:396px;overflow:hidden;}
+	.cover{position:relative;width:1584px;height:396px;overflow:hidden;background:linear-gradient(160deg,#2b2d3f 0%,#1D2027 100%);font-family:Roboto,sans-serif;}
+	.blob{position:absolute;border-radius:50%;filter:blur(90px);}
+	.b1{width:560px;height:560px;top:-260px;right:120px;background:var(--primary);opacity:.6;}
+	.b2{width:420px;height:420px;bottom:-300px;left:420px;background:var(--primary-light);opacity:.18;}
+	.b3{width:360px;height:360px;top:-120px;left:-120px;background:var(--primary);opacity:.25;}
+	.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1.5px);background-size:28px 28px;-webkit-mask-image:radial-gradient(ellipse at 65% 50%,#000 15%,transparent 75%);}
+	.code-card{position:absolute;right:40px;top:92px;width:214px;overflow:hidden;background:rgba(17,19,24,.72);border:1px solid rgba(45,212,191,.25);border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.35),0 0 40px rgba(45,212,191,.08);}
+	.code-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);}
+	.code-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18);}
+	.code-bar i:first-child{background:var(--primary-light);}
+	.code-bar span{margin-left:8px;font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,.45);}
+	pre{padding:14px 16px 16px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.75;color:rgba(255,255,255,.82);}
+	pre .k{color:var(--primary-light);}
+	pre .s{color:#FBBF77;}
+	.content{position:absolute;left:500px;top:78px;width:820px;}
+	.eyebrow{font-family:Montserrat,sans-serif;font-size:15px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--primary-light);}
+	h1{margin-top:16px;font-family:Montserrat,sans-serif;font-size:36px;font-weight:800;line-height:1.22;color:#fff;}
+	h1 span{color:var(--primary-light);}
+	.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+	.chips li{list-style:none;padding:7px 16px;font-family:Montserrat,sans-serif;font-size:14px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.06);border:1px solid rgba(45,212,191,.35);border-radius:999px;}
+	.meta{display:flex;gap:28px;margin-top:26px;font-size:16px;color:rgba(255,255,255,.65);}
+	.meta strong{font-family:Montserrat,sans-serif;font-weight:700;color:#fff;}
+	.meta .url{color:var(--primary-light);font-family:Montserrat,sans-serif;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="cover">
+	<span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+	<div class="dots"></div>
+
+	<!-- Code card: a small editor window -->
+	<div class="code-card">
+		<div class="code-bar"><i></i><i></i><i></i><span>esmail.js</span></div>
+<pre><span class="k">const</span> me = {
+  role: <span class="s">'Tech Lead'</span>,
+  ships: <span class="s">'SaaS'</span>,
+  scales: <span class="s">'teams'</span>,
+  remote: <span class="k">true</span>,
+};</pre>
+	</div>
+
+	<div class="content">
+		<div class="eyebrow">Engineering Manager &middot; Software Tech Lead</div>
+		<h1>I build and scale <span>SaaS platforms</span>,<br>and the engineering teams behind them.</h1>
+		<ul class="chips">
+			<li>System Design</li><li>Multi-tenant SaaS</li><li>Laravel</li><li>Node.js</li><li>Python</li><li>AWS</li><li>GCP</li>
+		</ul>
+		<div class="meta">
+			<span><strong>8+</strong> years</span>
+			<span><strong>50+</strong> engineers managed &amp; mentored</span>
+			<span class="url">shabayek.pages.dev</span>
+		</div>
+	</div>
+</div>
+</body>
+</html>

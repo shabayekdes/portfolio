@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+	:root{--primary:#0F766E;--primary-light:#2DD4BF;--ink:#1D2027;--muted:#5b6170;}
+	*{box-sizing:border-box;margin:0;padding:0;}
+	html,body{width:1584px;height:396px;overflow:hidden;}
+	.cover{position:relative;width:1584px;height:396px;overflow:hidden;background:#F6F7F9;font-family:Roboto,sans-serif;}
+	/* Teal band on the right, angled like the site's section waves */
+	.band{position:absolute;top:0;right:0;bottom:0;width:560px;background:linear-gradient(160deg,#0F766E 0%,#0b5750 100%);clip-path:polygon(18% 0,100% 0,100% 100%,0 100%);}
+	.band::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.5px);background-size:24px 24px;}
+	.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(29,32,39,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(29,32,39,.035) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:linear-gradient(90deg,transparent 20%,#000 45%,transparent 75%);}
+
+	.content{position:absolute;left:470px;top:70px;width:600px;}
+	.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:Montserrat,sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--primary);}
+	.eyebrow::before{content:"";width:28px;height:3px;border-radius:2px;background:var(--primary);}
+	h1{margin-top:14px;font-family:Montserrat,sans-serif;font-size:44px;font-weight:800;line-height:1.12;color:var(--ink);letter-spacing:-.5px;}
+	h1 em{font-style:normal;color:var(--primary);}
+	p.lead{max-width:520px;margin-top:16px;font-size:18px;line-height:1.55;color:var(--muted);}
+	.meta{display:flex;gap:12px;margin-top:22px;}
+	.meta span{padding:7px 14px;font-family:Montserrat,sans-serif;font-size:13px;font-weight:600;color:var(--ink);background:#fff;border:1px solid #e3e6ea;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.04);}
+	.meta span b{color:var(--primary);}
+
+	.stack{position:absolute;right:70px;top:52px;width:330px;display:flex;flex-direction:column;gap:12px;}
+	.layer{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:rgba(255,255,255,.96);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.18);font-family:Montserrat,sans-serif;}
+	.layer strong{font-size:14px;font-weight:700;color:var(--ink);}
+	.layer small{font-size:12px;font-weight:600;color:var(--muted);}
+	.layer:nth-child(2){margin-left:22px;}
+	.layer:nth-child(3){margin-left:44px;}
+	.layer:nth-child(4){margin-left:66px;background:#1D2027;}
+	.layer:nth-child(4) strong{color:#fff;}
+	.layer:nth-child(4) small{color:var(--primary-light);}
+	.dot{display:inline-block;width:8px;height:8px;margin-right:10px;border-radius:50%;background:var(--primary-light);}
+</style>
+</head>
+<body>
+<div class="cover">
+	<div class="grid"></div>
+	<div class="band"></div>
+
+	<div class="content">
+		<div class="eyebrow">Engineering Manager &middot; Tech Lead</div>
+		<h1>From the first commit<br>to <em>platforms at scale.</em></h1>
+		<p class="lead">8+ years leading teams that build multi-tenant SaaS across backend, web and mobile.</p>
+		<div class="meta">
+			<span><b>50+</b> engineers mentored</span>
+			<span><b>7</b> functions led</span>
+			<span>shabayek.pages.dev</span>
+		</div>
+	</div>
+
+	<!-- Platform layers, from the UI down to the cloud -->
+	<div class="stack">
+		<div class="layer"><strong><span class="dot"></span>Web &amp; Mobile</strong><small>React · Vue · Apps</small></div>
+		<div class="layer"><strong><span class="dot"></span>APIs</strong><small>Laravel · Node.js</small></div>
+		<div class="layer"><strong><span class="dot"></span>Services &amp; Data</strong><small>Python · Redis</small></div>
+		<div class="layer"><strong><span class="dot"></span>Cloud</strong><small>AWS · GCP</small></div>
+	</div>
+</div>
+</body>
+</html>

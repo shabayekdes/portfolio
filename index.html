@@ -1,3 +1,7 @@
+---
+# No layout: the homepage keeps its own <head>. Front matter just turns on Liquid for the includes below.
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +78,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	
 	<!-- Custom CSS -->
-	<link href="css/style.css?v=29" rel="stylesheet">
+	<link href="css/style.css?v=30" rel="stylesheet">
 	
 	<!-- Animate.css -->
 	<link href="css/animate.css" rel="stylesheet" media="all" type="text/css">
@@ -93,27 +97,7 @@
 			<div class="hero-bg" aria-hidden="true"><span class="hero-blob blob-1"></span><span class="hero-blob blob-2"></span><span class="hero-blob blob-3"></span></div>
 
 			<!--Navigation-->
-			<nav id="menu" class="navbar">
-				<div class="container-fluid">
-					<div class="navbar-header">
-					  <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
-						<a class="navbar-brand brand-name" href="#">Esmail <span>Shabayek</span></a>
-					</div>
-					<div class="collapse navbar-collapse navbar-ex1-collapse">
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="#page-top"><i class="fa fa-home nav-icon"></i>Home</a></li>
-							<li><a href="#about"><i class="fa fa-user nav-icon"></i>About</a></li>
-							<li><a href="#experience"><i class="fa fa-briefcase nav-icon"></i>Experience</a></li>
-							<li><a href="#project"><i class="fa fa-rocket nav-icon"></i>Projects</a></li>
-							<li><a href="#skills"><i class="fa fa-code nav-icon"></i>Skills</a></li>
-							<li><a href="#open-source"><i class="fa fa-code-branch nav-icon"></i>Open Source</a></li>
-							<li><a href="#work"><i class="fa fa-palette nav-icon"></i>Design</a></li>
-							<li><a href="#contact"><i class="fa fa-envelope nav-icon"></i>Contact</a></li>
-							<li class="nav-cta"><a href="files/Esmail-Shabayek-CV.pdf" download><i class="fa fa-download"></i> CV</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
+{% include nav.html %}
 			<!-- Static Header -->
 			<div class="header-text">
 				<div class="header-text-inner">
@@ -916,6 +900,28 @@
 		</section>
 		
 
+		<!-- ////////////Blog -->
+		{%- if site.posts.size > 0 %}
+		<section class="box-content box-blog" id="blog">
+			<div class="container">
+				<div class="heading wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
+					<span class="heading-icon"><i class="fa fa-pen-nib"></i></span>
+					<h2>Latest Posts</h2>
+					<hr class="line">
+					<div class="intro">Notes on engineering leadership, system design, and shipping SaaS</div>
+				</div>
+				<div class="content">
+					<div class="row post-grid">
+						{%- for post in site.posts limit:3 %}
+						{% include post-card.html post=post %}
+						{%- endfor %}
+					</div>
+					<div class="text-center"><a class="btn btn-ghost-dark" href="/blog/">View all posts <i class="fa fa-arrow-right btn-arrow"></i></a></div>
+				</div>
+			</div>
+		</section>
+		{%- endif %}
+
 		<!-- ////////////Contact -->
 		<section class="box-content box-contact" id="contact">
 			<div class="container">
@@ -965,29 +971,7 @@
 	</section>
 
 	<!--////////////////////////////////////Footer-->
-	<footer id="footer" class="site-footer">
-		<div class="container">
-			<div class="footer-main">
-				<div>
-					<div class="footer-brand">Esmail <span>Shabayek</span></div>
-					<p class="footer-role">Engineering Manager &middot; Software Tech Lead</p>
-				</div>
-				<div class="footer-actions">
-					<ul class="footer-social">
-						<li><a href="https://www.linkedin.com/in/shabayekdes/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
-						<li><a href="https://github.com/shabayekdes" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
-						<li><a href="https://stackoverflow.com/users/2301019/esmail-shabayek" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li>
-						<li><a href="https://www.behance.net/shabayekdes" aria-label="Behance"><i class="fab fa-behance"></i></a></li>
-					</ul>
-					<a href="#page-top" class="footer-top"><i class="fa fa-arrow-up"></i> Top</a>
-				</div>
-			</div>
-			<div class="footer-bottom">
-				<span>&copy; 2026 Esmail Shabayek</span>
-				<span>Built with care in Cairo</span>
-			</div>
-		</div>
-	</footer>
+{% include footer.html %}
 
 	<!-- ========== Scripts ========== -->
 	<script src="js/jquery-3.1.1.min.js"></script>
@@ -997,7 +981,7 @@
 	
 	<!-- Definity JS -->
 	<script src="js/typed.js"></script>
-	<script src="js/main.js?v=11"></script>
+	<script src="js/main.js?v=12"></script>
 	
 </div>
 </body>

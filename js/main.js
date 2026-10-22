@@ -332,6 +332,8 @@
 	Typed js
 -------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", function() {
+	// Only the homepage hero has the typed headline.
+	if (!document.getElementById("typed")) return;
 	new Typed("#typed", {
 	  strings: [
 		"<b>a Tech Lead</b>",

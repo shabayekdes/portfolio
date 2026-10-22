@@ -1,0 +1,24 @@
+{%- comment -%} Section links scroll in place on the homepage and point back to it from other pages. {%- endcomment -%}
+{%- if page.url == "/" -%}{%- assign base = "" -%}{%- else -%}{%- assign base = "/" -%}{%- endif -%}
+			<nav id="menu" class="navbar">
+				<div class="container-fluid">
+					<div class="navbar-header">
+					  <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+						<a class="navbar-brand brand-name" href="{{ base }}#page-top">Esmail <span>Shabayek</span></a>
+					</div>
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav">
+							<li{% if base == "" %} class="active"{% endif %}><a href="{{ base }}#page-top"><i class="fa fa-home nav-icon"></i>Home</a></li>
+							<li><a href="{{ base }}#about"><i class="fa fa-user nav-icon"></i>About</a></li>
+							<li><a href="{{ base }}#experience"><i class="fa fa-briefcase nav-icon"></i>Experience</a></li>
+							<li><a href="{{ base }}#project"><i class="fa fa-rocket nav-icon"></i>Projects</a></li>
+							<li><a href="{{ base }}#skills"><i class="fa fa-code nav-icon"></i>Skills</a></li>
+							<li><a href="{{ base }}#open-source"><i class="fa fa-code-branch nav-icon"></i>Open Source</a></li>
+							<li><a href="{{ base }}#work"><i class="fa fa-palette nav-icon"></i>Design</a></li>
+							<li{% if page.url contains "/blog/" %} class="active"{% endif %}><a href="/blog/"><i class="fa fa-pen-nib nav-icon"></i>Blog</a></li>
+							<li><a href="{{ base }}#contact"><i class="fa fa-envelope nav-icon"></i>Contact</a></li>
+							<li class="nav-cta"><a href="/files/Esmail-Shabayek-CV.pdf" download><i class="fa fa-download"></i> CV</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>

@@ -1,0 +1,19 @@
+---
+layout: default
+---
+		<section class="box-content box-post">
+			<div class="container">
+				<article class="post-content">
+					{%- if page.image != site.og_image %}
+					<img class="post-cover" src="{{ page.image | relative_url }}" alt="">
+					{%- endif %}
+					{{ content }}
+				</article>
+				<div class="post-footer">
+					{%- if page.tags.size > 0 %}
+					<span class="post-tags">{{ page.tags | join: " · " }}</span>
+					{%- endif %}
+					<a class="project-link" href="/blog/"><i class="fa fa-arrow-left"></i> All posts</a>
+				</div>
+			</div>
+		</section>
