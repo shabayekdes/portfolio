@@ -14,7 +14,64 @@
 		initNav();
 		initDesignLightbox();
 		initCountUp();
+		initTestimonials();
 	});
+
+
+/* --------------------------------------------------
+	Testimonials slider: native scroll-snap, buttons and dots page through it
+-------------------------------------------------- */
+
+	function initTestimonials () {
+		var track = document.querySelector('.testimonial-track');
+		if (!track) return;
+		var slider = track.closest('.testimonial-slider');
+		var dots = slider.querySelector('.testimonial-dots');
+		var prev = slider.querySelector('[data-dir="-1"]');
+		var next = slider.querySelector('[data-dir="1"]');
+
+		function pageCount () {
+			return Math.max(1, Math.ceil((track.scrollWidth - 1) / track.clientWidth));
+		}
+
+		function currentPage () {
+			if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) return pageCount() - 1;
+			return Math.round(track.scrollLeft / track.clientWidth);
+		}
+
+		function goTo (page) {
+			var cards = track.children;
+			var perPage = Math.max(1, Math.round(track.clientWidth / cards[0].offsetWidth));
+			var card = cards[Math.max(0, Math.min(cards.length - 1, page * perPage))];
+			track.scrollTo({ left: card.offsetLeft - cards[0].offsetLeft, behavior: 'smooth' });
+		}
+
+		function buildDots () {
+			dots.innerHTML = '';
+			for (var i = 0; i < pageCount(); i++) {
+				var b = document.createElement('button');
+				b.type = 'button';
+				b.setAttribute('aria-label', 'Go to page ' + (i + 1));
+				b.addEventListener('click', goTo.bind(null, i));
+				dots.appendChild(b);
+			}
+			update();
+		}
+
+		function update () {
+			var page = currentPage();
+			$(dots).children().each(function (i) { $(this).toggleClass('active', i === page); });
+			prev.disabled = page === 0;
+			next.disabled = page >= pageCount() - 1;
+		}
+
+		$([prev, next]).on('click', function () {
+			goTo(currentPage() + parseInt(this.getAttribute('data-dir'), 10));
+		});
+		track.addEventListener('scroll', update, { passive: true });
+		$(window).on('resize', buildDots);
+		buildDots();
+	}
 
 
 /* --------------------------------------------------
