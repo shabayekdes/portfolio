@@ -238,12 +238,50 @@
 	function initTimeline () {
 		var timeline = $('.cbp_tmtimeline');
 		var toggle = $('.timeline-toggle');
+		if (!timeline.length) return;
+
+		// Show the first 3 bullets of each job; the rest sit behind "Show more".
+		timeline.find('.cbp_tmlabel > ul').each(function(){
+			var list = $(this);
+			var extra = list.children('li').slice(3);
+			if (!extra.length) return;
+			extra.addClass('is-extra');
+			$('<button type="button" class="timeline-more" aria-expanded="false">Show more <i class="fa fa-chevron-down"></i></button>')
+				.insertAfter(list)
+				.on('click', function(){
+					var open = list.toggleClass('is-open').hasClass('is-open');
+					$(this).attr('aria-expanded', open).contents().first()[0].textContent = open ? 'Show less ' : 'Show more ';
+					stagger();
+				});
+		});
+
+		// Pull each card up beside the previous one, as long as it clears the
+		// last card on its own side and its dot stays below the previous dot.
+		function stagger () {
+			var items = timeline.children('li').filter(':visible');
+			items.css('margin', '');
+			if (window.innerWidth < 768) return;
+			var gap = 24, minStep = 90, sideBottom = [0, 0], top = 0, prevTop = -minStep, prevBottom = 0;
+			items.each(function(i){
+				var side = i % 2;
+				top = Math.max(prevTop + minStep, sideBottom[side] + gap);
+				$(this).css({ marginTop: top - prevBottom, marginBottom: 0 });
+				prevTop = top;
+				prevBottom = top + this.offsetHeight;
+				sideBottom[side] = prevBottom;
+			});
+		}
+		$(window).on('resize load', stagger);
+		stagger();
+
 		if (!timeline.find('li.is-older').length) return;
 		timeline.addClass('is-collapsed');
+		stagger();
 		toggle.prop('hidden', false).on('click', function(){
 			var expanded = timeline.toggleClass('is-collapsed').hasClass('is-collapsed') === false;
 			toggle.attr('aria-expanded', expanded)
-				.contents().first()[0].textContent = expanded ? 'Hide earlier roles ' : 'Show earlier roles (2018 – 2021) ';
+				.contents().first()[0].textContent = expanded ? 'Hide earlier roles ' : 'Show earlier roles (2018 – 2020) ';
+			stagger();
 		});
 	}
 

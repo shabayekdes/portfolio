@@ -418,165 +418,43 @@ a.btn:focus{outline: 0;}
 
 
 
-.cbp_tmtimeline {
-	margin: 30px 0 0 0;
-	padding: 0;
-	list-style: none;
-	position: relative;
-} 
+/* Experience timeline: centered line, jobs alternate right / left.
+   main.js pulls each card up beside the previous one (staggered) on desktop. */
+.cbp_tmtimeline{position: relative;margin: 30px 0 0;padding: 0;list-style: none;}
+.cbp_tmtimeline:before{content: "";position: absolute;top: 0;bottom: 0;left: 50%;width: 2px;margin-left: -1px;background: #d4d3d3;}
+.cbp_tmtimeline > li{display: grid;grid-template-columns: 1fr 56px 1fr;align-items: start;margin-bottom: 32px;pointer-events: none;}
+.cbp_tmtimeline > li > *{grid-row: 1;pointer-events: auto;}
+.cbp_tmtimeline > li .cbp_tmicon{grid-column: 2;justify-self: center;position: relative;z-index: 1;width: 16px;height: 16px;margin-top: 26px;background: #fff;border: 3px solid var(--primary);border-radius: 50%;box-shadow: 0 0 0 5px rgba(var(--primary-rgb), .12);}
+.cbp_tmtimeline > li .cbp_tmlabel{position: relative;padding: 22px 26px;font-size: 15px;font-weight: 300;line-height: 1.6;color: var(--text-body);background: #fff;border: 1px solid #e5e7eb;border-radius: 14px;box-shadow: 0 8px 24px rgba(0, 0, 0, .04);}
+.cbp_tmtimeline .cbp_tmtime{display: inline-block;margin-bottom: 10px;padding: 0 12px;font-family: Montserrat,sans-serif;font-size: 12px;font-weight: 700;line-height: 26px;color: var(--primary);background: rgba(var(--primary-rgb), .08);border-radius: 999px;}
+.cbp_tmtimeline .cbp_tmtime span{color: inherit;}
+.cbp_tmtimeline > li .cbp_tmlabel h2{margin: 0 0 4px;font-size: 20px;color: #2b2d3f;}
+.cbp_tmlabel span{color: var(--text-muted);}
+.cbp_tmlabel .line{margin: 12px 0;border-top: 1px solid #e5e7eb;}
+.cbp_tmlabel > ul{margin: 0;padding-left: 18px;}
+.cbp_tmlabel > ul li{margin-bottom: 6px;}
+.cbp_tmlabel > ul:not(.is-open) li.is-extra{display: none;}
+.timeline-more{padding: 0;font-size: 14px;font-weight: 500;color: var(--primary);background: none;border: none;}
+.timeline-more:hover{text-decoration: underline;}
+.timeline-more i{margin-left: 4px;font-size: 11px;transition: transform .2s ease;}
+.timeline-more[aria-expanded="true"] i{transform: rotate(180deg);}
 
-/* The line */
-.cbp_tmtimeline:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 2px;
-	background: #d4d3d3;
-	left: 20%;
-	margin-left: -10px;
-}
+/* Arrow pointing at the line */
+.cbp_tmtimeline > li .cbp_tmlabel:after{content: "";position: absolute;top: 27px;width: 14px;height: 14px;background: #fff;border: solid #e5e7eb;}
 
-/* The date/time */
-.cbp_tmtimeline > li .cbp_tmtime {
-	display: block;
-	width: 25%;
-	padding-right: 100px;
-    position: absolute;
-    line-height: 25px;
-    margin-top: 7px;
-}
+/* Odd jobs on the right, even jobs on the left */
+.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel{grid-column: 3;}
+.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after{left: -8px;border-width: 0 0 1px 1px;transform: rotate(45deg);}
+.cbp_tmtimeline > li:nth-child(even) .cbp_tmlabel{grid-column: 1;}
+.cbp_tmtimeline > li:nth-child(even) .cbp_tmlabel:after{right: -8px;border-width: 1px 1px 0 0;transform: rotate(45deg);}
 
-.cbp_tmtimeline > li .cbp_tmtime span {
-	display: block;
-	text-align: right;
-}
-
-.cbp_tmtimeline > li .cbp_tmtime span:first-child {
-	font-size: 0.8em;
-	color: var(--text-muted);
-}
-
-/* Right content */
-.cbp_tmtimeline > li .cbp_tmlabel {
-	margin: 0 0 15px 25%;
-	color: #fff;
-	padding: 1em;
-	font-size: 1em;
-	font-weight: 300;
-	line-height: 1.4;
-	position: relative;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-.cbp_tmlabel span{
-    color: #999;
-
-}
-.cbp_tmlabel > ul{
-    margin-left: -30px;
-    color: var(--text-body);
-}
-
-.cbp_tmtimeline > li .cbp_tmlabel h2 { 
-	margin: 0px;
-    font-size: 22px;
-}
-.cbp_tmlabel .line{
-    margin: 5px 0;
-    border-top: solid 2px #ccc;
-}
-
-/* The triangle */
-.cbp_tmtimeline > li .cbp_tmlabel:after {
-    right: 100%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-right-color: #ccc;
-    border-width: 10px;
-    top: 10px;
-}
-
-.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
-	border-right-color: #ccc;
-}
-
-/* The icons */
-.cbp_tmtimeline > li .cbp_tmicon {
-    width: 10px;
-    height: 10px;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    font-size: 1.4em;
-    line-height: 40px;
-    -webkit-font-smoothing: antialiased;
-    position: absolute;
-    color: #fff;
-    background: #ECECEC;
-    border-radius: 50%;
-    box-shadow: 0 0 0 2px #ccc;
-    text-align: center;
-    left: 20%;
-    /* top: 0; */
-    margin: 15px 0 0 -14px;
-}
-
-/* Example Media Queries */
-@media screen and (max-width: 65.375em) {
-
-	.cbp_tmtimeline > li .cbp_tmtime span:last-child {
-		font-size: 1.5em;
-	}
-}
-
-@media screen and (max-width: 47.2em) {
-	.cbp_tmtimeline:before {
-		display: none;
-	}
-
-	.cbp_tmtimeline > li .cbp_tmtime {
-		width: 100%;
-		position: relative;
-		padding: 0 0 20px 0;
-	}
-
-	.cbp_tmtimeline > li .cbp_tmtime span {
-		text-align: left;
-		margin-left: 25px;
-	}
-
-	.cbp_tmtimeline > li .cbp_tmlabel {
-		margin: 0 0 30px 0;
-		padding: 1em;
-		font-weight: 400;
-		font-size: 95%;
-	}
-
-	.cbp_tmtimeline > li .cbp_tmlabel:after {
-		right: auto;
-		left: 20px;
-		border-right-color: transparent;
-		border-bottom-color: #ccc;
-		top: -20px;
-	}
-
-	.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
-		border-right-color: transparent;
-		border-bottom-color: #ccc;
-	}
-
-	.cbp_tmtimeline > li .cbp_tmicon {
-		position: relative;
-		float: left;
-		left: auto;
-		margin: -35px 5px 0 0px;
-	}	
+/* Phones: line on the left, cards stack to its right */
+@media(max-width:767px) {
+	.cbp_tmtimeline:before{left: 12px;}
+	.cbp_tmtimeline > li{grid-template-columns: 24px 1fr;column-gap: 14px;margin-bottom: 24px;}
+	.cbp_tmtimeline > li .cbp_tmicon{grid-column: 1;margin-top: 24px;}
+	.cbp_tmtimeline > li:nth-child(n) .cbp_tmlabel{grid-column: 2;padding: 20px;}
+	.cbp_tmtimeline > li:nth-child(n) .cbp_tmlabel:after{display: none;}
 }
 /* Hero role */
 
@@ -866,6 +744,7 @@ header .main-header{z-index: 3;padding-top: 70px;}
 
 /* Experience: earlier roles collapsed behind a toggle */
 .cbp_tmtimeline.is-collapsed > li.is-older{display: none;}
+.timeline-toggle{margin-top: 32px;}
 .timeline-toggle i{margin-left: 6px;transition: transform .2s ease;}
 .timeline-toggle[aria-expanded="true"] i{transform: rotate(180deg);}
 .cbp_tmtimeline > li .cbp_tmlabel ul li{color: var(--text-body);}
