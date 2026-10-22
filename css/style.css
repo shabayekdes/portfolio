@@ -161,7 +161,7 @@ body.sub-page .header-text{padding-left: 10%;margin-top: 12vh;}
 .box-content .heading .intro{max-width: 300px;margin: auto}
 
 .box-content.box-style-2{background: #ECECEC;}
-.box-content.box-style-3{background: url(../images/bg.jpg) fixed;}
+.box-content.box-style-3{background: linear-gradient(rgba(29, 32, 39, .55), rgba(29, 32, 39, .55)), #1D2027 url(../images/quote-bg.jpg) center / cover fixed;}
 /* ---------------------------------------------------------------------------- */
 /* -------------------------------------Box 1---------------------------------- */
 /* ---------------------------------------------------------------------------- */
@@ -273,6 +273,9 @@ body.sub-page .header-text{padding-left: 10%;margin-top: 12vh;}
 /* ---------------------------------------------------------------------------- */
 .box-content.box-5 {}
 .box-content.box-5 .box-item{text-align: center;color: #fff;}
+.box-content.box-5 .quote-author{margin: 24px 0 0;font-family: Montserrat,sans-serif;font-size: 14px;font-weight: 600;letter-spacing: 2px;text-transform: uppercase;color: var(--primary-light);}
+.box-content.box-5 .quote-author:before{content: "";display: inline-block;width: 32px;height: 2px;margin: 0 12px 4px 0;vertical-align: middle;background: currentColor;}
+.box-content.box-5 .quote-author cite{font-style: italic;text-transform: none;letter-spacing: 0;color: rgba(255, 255, 255, .75);}
 .box-content.box-5 blockquote {position: relative;padding: 40px 120px 0;text-align: center;font-size: 38px; border:none;line-height: 1.2;}
 .box-content.box-5 blockquote:before, .box-content.box-5 blockquote:after {position: absolute;width: 60px;height: 60px;font-size: 130px;line-height: 1; }
 .box-content.box-5 blockquote:before {top: 0;left: 0;content: "\201C"; }
@@ -468,6 +471,7 @@ a.btn:focus{outline: 0;}
 .skill-tags{list-style: none;padding: 0;margin: 0;}
 .skill-tags li{display: inline-block;margin: 0 6px 8px 0;padding: 5px 12px;font-size: 13px;color: #2b2d3f;background: #fff;border: 1px solid #d4d3d3;border-radius: 15px;}
 .skill-tags li:hover{border-color: var(--primary);color: var(--primary);}
+.skill-tags li img{width: 16px;height: 16px;margin: -2px 6px 0 0;vertical-align: middle;}
 
 /* Projects */
 .box-content.box-6 .box-item .project-cover{height: 160px;display: flex;align-items: center;justify-content: center;background: #2b2d3f;color: var(--primary-light);font-size: 64px;}
