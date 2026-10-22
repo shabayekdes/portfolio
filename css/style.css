@@ -817,3 +817,14 @@ header .main-header{z-index: 3;padding-top: 70px;}
 	.testimonial-card{padding: 24px;}
 }
 #impact .heading .intro, #testimonials .heading .intro{max-width: 520px;}
+
+/* Project cards: rounded, bordered, button pinned to the bottom */
+.box-content.box-6 .project-grid .box-item{display: flex;flex-direction: column;overflow: hidden;border: 1px solid #e5e7eb;border-radius: 16px;box-shadow: 0 8px 24px rgba(0, 0, 0, .04);transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+.box-content.box-6 .project-grid .box-item:hover{transform: translateY(-4px);border-color: rgba(var(--primary-rgb), .35);box-shadow: 0 18px 40px rgba(0, 0, 0, .08);}
+.box-content.box-6 .project-grid .box-item .content{display: flex;flex: 1;flex-direction: column;padding: 24px 28px 28px;}
+.box-content.box-6 .project-grid .box-item .content p{color: var(--text-body);}
+.box-content.box-6 .box-item .content .project-tags{display: block;margin: auto 0 20px;padding-top: 16px;border-top: 1px solid #f0f1f3;}
+.project-link{display: inline-flex;align-self: flex-start;align-items: center;gap: 8px;padding: 10px 20px;font-family: Montserrat,sans-serif;font-size: 14px;font-weight: 600;color: var(--primary);background: rgba(var(--primary-rgb), .08);border: 1px solid rgba(var(--primary-rgb), .25);border-radius: 10px;}
+.project-link i{font-size: 12px;transition: transform .2s ease;}
+.project-link:hover, .project-link:focus{color: #fff;text-decoration: none;background: var(--primary);border-color: var(--primary);}
+.project-link:hover i{transform: translateX(4px);}
