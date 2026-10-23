@@ -14,8 +14,42 @@
 		initNav();
 		initDesignLightbox();
 		initCountUp();
+		initAnalytics();
 		$('.testimonial-track, .project-track').each(function(){ initSlider(this); });
 	});
+
+
+/* --------------------------------------------------
+	Analytics: report key visitor actions to GA4 (no-op until GA_ID is set in index.html)
+-------------------------------------------------- */
+
+	function initAnalytics () {
+		function track (name, params) {
+			if (typeof gtag === 'function') gtag('event', name, params);
+		}
+
+		$(document).on('click', 'a[href]', function () {
+			var href = this.getAttribute('href');
+			var area = $(this).closest('section[id], header, footer')[0];
+			var where = area ? (area.id || area.tagName.toLowerCase()) : 'page';
+
+			if (/\.pdf$/i.test(href)) track('cv_download', { link_location: where });
+			else if (href.indexOf('mailto:') === 0) track('contact_click', { method: 'email', link_location: where });
+			else if (href.indexOf('tel:') === 0) track('contact_click', { method: 'phone', link_location: where });
+			else if (this.hostname && this.hostname !== location.hostname) track('outbound_click', { link_url: this.href, link_location: where });
+		});
+
+		// Which sections visitors actually reach
+		if (!('IntersectionObserver' in window)) return;
+		var observer = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (!entry.isIntersecting) return;
+				track('section_view', { section: entry.target.id });
+				observer.unobserve(entry.target);
+			});
+		}, { threshold: 0.4 });
+		$('#page-content > section[id]').each(function () { observer.observe(this); });
+	}
 
 
 /* --------------------------------------------------
@@ -337,8 +371,11 @@ document.addEventListener("DOMContentLoaded", function() {
 		"<b>an Engineering Manager</b>",
 		"<b>a Backend Architect</b>"
 	  ],
-	  typeSpeed: 100,
-	  backSpeed: 0,
-	  loop: true
+	    typeSpeed: 50,
+		backSpeed: 25,
+		backDelay: 1200,
+		startDelay: 300,
+		loop: true,
+		smartBackspace: true
 	});
   });

@@ -8,26 +8,42 @@
 	
 	<title>Esmail Shabayek – Engineering Manager &amp; Software Tech Lead</title>
 	<link rel="canonical" href="https://shabayek.pages.dev/">
+	<meta name="author" content="Esmail Shabayek">
+	<meta name="robots" content="index, follow, max-image-preview:large">
 
 	<!-- Social previews (LinkedIn, WhatsApp, Slack, X) -->
 	<meta property="og:type" content="profile">
+	<meta property="og:site_name" content="Esmail Shabayek">
+	<meta property="og:locale" content="en_US">
+	<meta property="profile:first_name" content="Esmail">
+	<meta property="profile:last_name" content="Shabayek">
 	<meta property="og:url" content="https://shabayek.pages.dev/">
 	<meta property="og:title" content="Esmail Shabayek – Engineering Manager &amp; Software Tech Lead">
 	<meta property="og:description" content="Engineering leader with 8+ years building and scaling SaaS platforms across backend, web, and mobile. Laravel, Node.js, Python, AWS and GCP.">
 	<meta property="og:image" content="https://shabayek.pages.dev/images/og-card.jpg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Esmail Shabayek – Engineering Manager &amp; Software Tech Lead">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Esmail Shabayek – Engineering Manager &amp; Software Tech Lead">
 	<meta name="twitter:description" content="Engineering leader with 8+ years building and scaling SaaS platforms across backend, web, and mobile. Laravel, Node.js, Python, AWS and GCP.">
 	<meta name="twitter:image" content="https://shabayek.pages.dev/images/og-card.jpg">
+	<meta name="twitter:image:alt" content="Esmail Shabayek – Engineering Manager &amp; Software Tech Lead">
 
 	<!-- Structured data for search engines -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
+		"@type": "ProfilePage",
+		"url": "https://shabayek.pages.dev/",
+		"name": "Esmail Shabayek – Engineering Manager & Software Tech Lead",
+		"dateModified": "2026-10-23",
+		"mainEntity": {
 		"@type": "Person",
+		"@id": "https://shabayek.pages.dev/#person",
 		"name": "Esmail Shabayek",
+		"givenName": "Esmail",
+		"familyName": "Shabayek",
 		"url": "https://shabayek.pages.dev/",
 		"image": "https://shabayek.pages.dev/images/me.jpg",
 		"jobTitle": "Engineering Manager & Software Tech Lead",
@@ -54,7 +70,23 @@
 			"https://stackoverflow.com/users/2301019/esmail-shabayek",
 			"https://www.behance.net/shabayekdes"
 		]
+		}
 	}
+	</script>
+
+	<!-- Analytics (Google Analytics 4). Skipped on localhost so local testing isn't counted. -->
+	<script>
+		var GA_ID = 'G-0WBER6HFEK';
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){ dataLayer.push(arguments); }
+		if (!/X{6,}/.test(GA_ID) && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+			var ga = document.createElement('script');
+			ga.async = true;
+			ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+			document.head.appendChild(ga);
+			gtag('js', new Date());
+			gtag('config', GA_ID);
+		}
 	</script>
 
 	<!-- Fonts -->
@@ -118,7 +150,7 @@
 			<div class="header-text">
 				<div class="header-text-inner">
 					<span class="header-eyebrow">Hi, I'm Esmail Shabayek</span>
-					<h1>I’m <span id="typed" style="white-space:pre;">a Tech Lead</span></h1>
+					<h1><span class="sr-only">Esmail Shabayek – </span>I’m <span id="typed" style="white-space:pre;">a Tech Lead</span></h1>
 					<p class="header-lead">I build and scale SaaS platforms, and the engineering teams behind them, across backend, web, and mobile.</p>
 					<div class="header-cta">
 						<a class="btn btn-skin" href="files/Esmail-Shabayek-CV.pdf" download><i class="fa fa-download"></i> Download CV</a>
@@ -1017,7 +1049,7 @@
 	
 	<!-- Definity JS -->
 	<script src="js/typed.js"></script>
-	<script src="js/main.js?v=12"></script>
+	<script src="js/main.js?v=13"></script>
 	
 </div>
 </body>
