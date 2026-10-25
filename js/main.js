@@ -14,18 +14,50 @@
 		initNav();
 		initDesignLightbox();
 		initCountUp();
-		initTestimonials();
+		initAnalytics();
+		$('.testimonial-track, .project-track').each(function(){ initSlider(this); });
 	});
 
 
 /* --------------------------------------------------
-	Testimonials slider: native scroll-snap, buttons and dots page through it
+	Analytics: report key visitor actions to GA4 (no-op until GA_ID is set in index.html)
 -------------------------------------------------- */
 
-	function initTestimonials () {
-		var track = document.querySelector('.testimonial-track');
-		if (!track) return;
-		var slider = track.closest('.testimonial-slider');
+	function initAnalytics () {
+		function track (name, params) {
+			if (typeof gtag === 'function') gtag('event', name, params);
+		}
+
+		$(document).on('click', 'a[href]', function () {
+			var href = this.getAttribute('href');
+			var area = $(this).closest('section[id], header, footer')[0];
+			var where = area ? (area.id || area.tagName.toLowerCase()) : 'page';
+
+			if (/\.pdf$/i.test(href)) track('cv_download', { link_location: where });
+			else if (href.indexOf('mailto:') === 0) track('contact_click', { method: 'email', link_location: where });
+			else if (href.indexOf('tel:') === 0) track('contact_click', { method: 'phone', link_location: where });
+			else if (this.hostname && this.hostname !== location.hostname) track('outbound_click', { link_url: this.href, link_location: where });
+		});
+
+		// Which sections visitors actually reach
+		if (!('IntersectionObserver' in window)) return;
+		var observer = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (!entry.isIntersecting) return;
+				track('section_view', { section: entry.target.id });
+				observer.unobserve(entry.target);
+			});
+		}, { threshold: 0.4 });
+		$('#page-content > section[id]').each(function () { observer.observe(this); });
+	}
+
+
+/* --------------------------------------------------
+	Sliders (testimonials, projects): native scroll-snap, arrows and optional dots page through it
+-------------------------------------------------- */
+
+	function initSlider (track) {
+		var slider = $(track).closest('.testimonial-slider, .project-slider')[0];
 		var dots = slider.querySelector('.testimonial-dots');
 		var prev = slider.querySelector('[data-dir="-1"]');
 		var next = slider.querySelector('[data-dir="1"]');
@@ -47,6 +79,7 @@
 		}
 
 		function buildDots () {
+			if (!dots) return update();
 			dots.innerHTML = '';
 			for (var i = 0; i < pageCount(); i++) {
 				var b = document.createElement('button');
@@ -60,7 +93,7 @@
 
 		function update () {
 			var page = currentPage();
-			$(dots).children().each(function (i) { $(this).toggleClass('active', i === page); });
+			if (dots) $(dots).children().each(function (i) { $(this).toggleClass('active', i === page); });
 			prev.disabled = page === 0;
 			next.disabled = page >= pageCount() - 1;
 		}
@@ -340,8 +373,11 @@ document.addEventListener("DOMContentLoaded", function() {
 		"<b>an Engineering Manager</b>",
 		"<b>a Backend Architect</b>"
 	  ],
-	  typeSpeed: 100,
-	  backSpeed: 0,
-	  loop: true
+	    typeSpeed: 50,
+		backSpeed: 25,
+		backDelay: 1200,
+		startDelay: 300,
+		loop: true,
+		smartBackspace: true
 	});
   });

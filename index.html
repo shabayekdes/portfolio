@@ -12,26 +12,42 @@ layout: null
 	
 	<title>Esmail Shabayek – Engineering Manager &amp; Software Tech Lead</title>
 	<link rel="canonical" href="https://shabayek.pages.dev/">
+	<meta name="author" content="Esmail Shabayek">
+	<meta name="robots" content="index, follow, max-image-preview:large">
 
 	<!-- Social previews (LinkedIn, WhatsApp, Slack, X) -->
 	<meta property="og:type" content="profile">
+	<meta property="og:site_name" content="Esmail Shabayek">
+	<meta property="og:locale" content="en_US">
+	<meta property="profile:first_name" content="Esmail">
+	<meta property="profile:last_name" content="Shabayek">
 	<meta property="og:url" content="https://shabayek.pages.dev/">
 	<meta property="og:title" content="Esmail Shabayek – Engineering Manager &amp; Software Tech Lead">
 	<meta property="og:description" content="Engineering leader with 8+ years building and scaling SaaS platforms across backend, web, and mobile. Laravel, Node.js, Python, AWS and GCP.">
 	<meta property="og:image" content="https://shabayek.pages.dev/images/og-card.jpg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Esmail Shabayek – Engineering Manager &amp; Software Tech Lead">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Esmail Shabayek – Engineering Manager &amp; Software Tech Lead">
 	<meta name="twitter:description" content="Engineering leader with 8+ years building and scaling SaaS platforms across backend, web, and mobile. Laravel, Node.js, Python, AWS and GCP.">
 	<meta name="twitter:image" content="https://shabayek.pages.dev/images/og-card.jpg">
+	<meta name="twitter:image:alt" content="Esmail Shabayek – Engineering Manager &amp; Software Tech Lead">
 
 	<!-- Structured data for search engines -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
+		"@type": "ProfilePage",
+		"url": "https://shabayek.pages.dev/",
+		"name": "Esmail Shabayek – Engineering Manager & Software Tech Lead",
+		"dateModified": "2026-10-23",
+		"mainEntity": {
 		"@type": "Person",
+		"@id": "https://shabayek.pages.dev/#person",
 		"name": "Esmail Shabayek",
+		"givenName": "Esmail",
+		"familyName": "Shabayek",
 		"url": "https://shabayek.pages.dev/",
 		"image": "https://shabayek.pages.dev/images/me.jpg",
 		"jobTitle": "Engineering Manager & Software Tech Lead",
@@ -58,7 +74,23 @@ layout: null
 			"https://stackoverflow.com/users/2301019/esmail-shabayek",
 			"https://www.behance.net/shabayekdes"
 		]
+		}
 	}
+	</script>
+
+	<!-- Analytics (Google Analytics 4). Skipped on localhost so local testing isn't counted. -->
+	<script>
+		var GA_ID = 'G-0WBER6HFEK';
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){ dataLayer.push(arguments); }
+		if (!/X{6,}/.test(GA_ID) && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+			var ga = document.createElement('script');
+			ga.async = true;
+			ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+			document.head.appendChild(ga);
+			gtag('js', new Date());
+			gtag('config', GA_ID);
+		}
 	</script>
 
 	<!-- Fonts -->
@@ -78,7 +110,7 @@ layout: null
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	
 	<!-- Custom CSS -->
-	<link href="css/style.css?v=30" rel="stylesheet">
+	<link href="css/style.css?v=31" rel="stylesheet">
 	
 	<!-- Animate.css -->
 	<link href="css/animate.css" rel="stylesheet" media="all" type="text/css">
@@ -102,7 +134,7 @@ layout: null
 			<div class="header-text">
 				<div class="header-text-inner">
 					<span class="header-eyebrow">Hi, I'm Esmail Shabayek</span>
-					<h1>I’m <span id="typed" style="white-space:pre;">a Tech Lead</span></h1>
+					<h1><span class="sr-only">Esmail Shabayek – </span>I’m <span id="typed" style="white-space:pre;">a Tech Lead</span></h1>
 					<p class="header-lead">I build and scale SaaS platforms, and the engineering teams behind them, across backend, web, and mobile.</p>
 					<div class="header-cta">
 						<a class="btn btn-skin" href="files/Esmail-Shabayek-CV.pdf" download><i class="fa fa-download"></i> Download CV</a>
@@ -459,8 +491,10 @@ layout: null
 					<div class="intro">Selected products I have built and led</div>
 				</div>
 				<div class="content">
-					<div class="row project-grid">
-						<div class="col-md-4 col-sm-6 item">
+					<div class="project-slider">
+					<button type="button" class="slider-arrow" data-dir="-1" aria-label="Previous projects"><i class="fa fa-chevron-left"></i></button>
+					<div class="project-grid project-track" tabindex="0" aria-label="Projects">
+						<div class="item">
 							<div class="box-item">
 								<div class="project-media">
 									<div class="device-phone">
@@ -475,7 +509,7 @@ layout: null
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-6 item">
+						<div class="item">
 							<div class="box-item">
 								<div class="project-media">
 									<div class="device-browser">
@@ -491,7 +525,7 @@ layout: null
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-6 item">
+						<div class="item">
 							<div class="box-item">
 								<div class="project-media">
 									<div class="device-browser">
@@ -507,6 +541,24 @@ layout: null
 								</div>
 							</div>
 						</div>
+						<div class="item">
+							<div class="box-item">
+								<div class="project-media">
+									<div class="device-browser">
+										<div class="browser-bar"><i></i><i></i><i></i><span>minisouq</span></div>
+										<img src="images/projects/minisouq.jpg" alt="MiniSouq store homepage" loading="lazy">
+									</div>
+								</div>
+								<div class="content">
+									<h3><img class="project-icon" src="images/projects/minisouq-icon.png" alt=""><a href="https://github.com/shabayekdes/mini-souq">MiniSouq</a></h3>
+									<p>Solo e-commerce store built during the ALX Software Engineering programme, with product catalog and categories, search, shopping cart and checkout, and email or GitHub sign-in. Containerised with Docker and deployed on Railway.</p>
+									<span class="project-tags">Django · PostgreSQL · Docker</span>
+									<a class="project-link" href="https://github.com/shabayekdes/mini-souq">View on GitHub <i class="fa fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="slider-arrow" data-dir="1" aria-label="Next projects"><i class="fa fa-chevron-right"></i></button>
 					</div>
 				</div>
 			</div>
@@ -981,7 +1033,7 @@ layout: null
 	
 	<!-- Definity JS -->
 	<script src="js/typed.js"></script>
-	<script src="js/main.js?v=12"></script>
+	<script src="js/main.js?v=14"></script>
 	
 </div>
 </body>
