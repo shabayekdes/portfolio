@@ -44,3 +44,7 @@ exclude:
   - vendor
   - .claude
   - design
+
+# Cloudflare Pages reads _headers from the output root; Jekyll skips _files unless listed here
+include:
+  - _headers
