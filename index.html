@@ -110,7 +110,7 @@ layout: null
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	
 	<!-- Custom CSS -->
-	<link href="css/style.css?v=33" rel="stylesheet">
+	<link href="css/style.css?v=34" rel="stylesheet">
 	
 	<!-- Animate.css -->
 	<link href="css/animate.css" rel="stylesheet" media="all" type="text/css">
@@ -963,11 +963,14 @@ layout: null
 					<div class="intro">Notes on engineering leadership, system design, and shipping SaaS</div>
 				</div>
 				<div class="content">
+					{% include post-featured.html post=site.posts.first %}
+					{%- if site.posts.size > 1 %}
 					<div class="row post-grid">
-						{%- for post in site.posts limit:3 %}
+						{%- for post in site.posts offset:1 limit:3 %}
 						{% include post-card.html post=post %}
 						{%- endfor %}
 					</div>
+					{%- endif %}
 					<div class="text-center"><a class="btn btn-ghost-dark" href="/blog/">View all posts <i class="fa fa-arrow-right btn-arrow"></i></a></div>
 				</div>
 			</div>

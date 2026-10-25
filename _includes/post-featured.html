@@ -1,0 +1,15 @@
+{%- assign post = include.post -%}
+					<article class="post-featured">
+						<a class="post-featured-media" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+							{%- if post.image != site.og_image %}<img src="{{ post.image | relative_url }}" alt="">{% else %}<i class="fa fa-pen-nib"></i>{% endif -%}
+						</a>
+						<div class="post-featured-body">
+							<span class="post-meta"><span class="post-badge">Latest</span>{{ post.date | date: "%b %-d, %Y" }} &middot; {% include reading-time.html content=post.content %}</span>
+							<h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+							<p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 40 }}</p>
+							{%- if post.tags.size > 0 %}
+							<span class="post-tags">{{ post.tags | join: " · " }}</span>
+							{%- endif %}
+							<a class="project-link" href="{{ post.url | relative_url }}">Read post <i class="fa fa-arrow-right"></i></a>
+						</div>
+					</article>
