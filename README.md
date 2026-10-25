@@ -24,6 +24,12 @@ bundle exec jekyll serve --drafts   # http://localhost:4000
    ---
    ```
 
-3. Write the post in Markdown, then commit and push. It shows up on `/blog/`, in the homepage "Latest Posts" section, and in `/feed.xml`.
+3. Generate its thumbnail (card image, post cover and social preview) and point `image:` at it:
 
-See `_drafts/sample-post.md` for every supported formatting option.
+   ```sh
+   design/render-post-cover.sh your-slug "Post title" "phrase to highlight" "Tag, Tag" File.php $'// optional\ncode snippet'
+   ```
+
+   Only the slug and title are required; leave out the code to get a title-only cover.
+
+4. Write the post in Markdown, then commit and push. It shows up on `/blog/`, in the homepage "Latest Posts" section, and in `/feed.xml`.

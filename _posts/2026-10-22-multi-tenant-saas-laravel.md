@@ -3,6 +3,7 @@ title: "Multi-tenant SaaS in Laravel: isolation that fails closed"
 date: 2026-10-22 10:00:00 +0300
 description: Picking a tenancy model, scoping every query to the current tenant, and the places tenant data quietly leaks — queues, cache, files and raw queries.
 tags: [Laravel, SaaS, Architecture, PostgreSQL]
+image: /images/blog/multi-tenant-saas-laravel.jpg
 ---
 
 In a multi-tenant product, the worst bug isn't downtime. It's customer A seeing customer B's invoices. Most tenant-isolation bugs aren't clever. They happen when a query, job or cache key simply forgets which tenant it belongs to.

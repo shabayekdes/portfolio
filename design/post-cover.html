@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+	Blog post cover / thumbnail, 1200x630 (card thumbnail, post cover and social preview).
+	Fill it through the query string, then screenshot it at 1200x630:
+	  title  post title
+	  hl     part of the title to highlight (optional)
+	  tags   comma-separated tags (optional)
+	  code   short snippet, lines separated by "\n" (optional)
+	  file   file name shown above the snippet (optional)
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+	:root{--primary:#0F766E;--primary-rgb:15,118,110;--primary-light:#2DD4BF;}
+	*{box-sizing:border-box;margin:0;padding:0;}
+	html,body{width:1200px;height:630px;overflow:hidden;}
+	.cover{position:relative;width:1200px;height:630px;overflow:hidden;background:linear-gradient(160deg,#2b2d3f 0%,#1D2027 100%);font-family:Montserrat,sans-serif;}
+	.blob{position:absolute;border-radius:50%;filter:blur(100px);}
+	.b1{width:620px;height:620px;top:-300px;right:-80px;background:var(--primary);opacity:.6;}
+	.b2{width:460px;height:460px;bottom:-320px;left:200px;background:var(--primary-light);opacity:.16;}
+	.b3{width:380px;height:380px;top:-160px;left:-160px;background:var(--primary);opacity:.25;}
+	.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1.5px);background-size:30px 30px;-webkit-mask-image:radial-gradient(ellipse at 70% 45%,#000 15%,transparent 75%);}
+	.content{position:absolute;left:80px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;width:600px;}
+	.cover.no-code .content{width:1000px;}
+	.eyebrow{font-size:18px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--primary-light);}
+	h1{margin-top:22px;font-size:54px;font-weight:800;line-height:1.15;color:#fff;}
+	.cover.no-code h1{font-size:64px;}
+	h1 span{color:var(--primary-light);}
+	.author{display:flex;align-items:center;gap:14px;margin-top:40px;font-size:18px;font-weight:600;color:rgba(255,255,255,.7);}
+	.author i{width:36px;height:3px;background:var(--primary-light);border-radius:2px;}
+	.code-card{position:absolute;right:70px;top:50%;width:400px;overflow:hidden;background:rgba(17,19,24,.75);border:1px solid rgba(45,212,191,.25);border-radius:16px;box-shadow:0 30px 70px rgba(0,0,0,.4),0 0 50px rgba(45,212,191,.08);transform:translateY(-50%);}
+	.code-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);}
+	.code-bar i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.18);}
+	.code-bar i:first-child{background:var(--primary-light);}
+	.code-bar span{margin-left:10px;font-size:14px;font-weight:600;color:rgba(255,255,255,.45);}
+	pre{padding:20px 22px 24px;font-family:'JetBrains Mono',monospace;font-size:17px;line-height:1.8;color:rgba(255,255,255,.85);white-space:pre;font-variant-ligatures:none;}
+	pre .k{color:var(--primary-light);}
+	pre .s{color:#FBBF77;}
+	pre .c{color:rgba(255,255,255,.4);}
+</style>
+</head>
+<body>
+<div class="cover">
+	<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+	<div class="dots"></div>
+	<div class="content">
+		<div class="eyebrow" id="tags"></div>
+		<h1 id="title"></h1>
+		<div class="author"><i></i>Esmail Shabayek</div>
+	</div>
+	<div class="code-card" id="code-card">
+		<div class="code-bar"><i></i><i></i><i></i><span id="file"></span></div>
+		<pre id="code"></pre>
+	</div>
+</div>
+<script>
+	var q = new URLSearchParams(location.search);
+	var esc = function (s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+	var title = q.get('title') || 'Post title', hl = q.get('hl');
+	var titleHtml = esc(title);
+	if (hl && title.indexOf(hl) > -1) titleHtml = titleHtml.replace(esc(hl), '<span>' + esc(hl) + '</span>');
+	document.getElementById('title').innerHTML = titleHtml;
+	document.getElementById('tags').textContent = (q.get('tags') || '').split(',').map(function (t) { return t.trim(); }).filter(Boolean).join(' · ');
+	var code = q.get('code');
+	if (code) {
+		document.getElementById('file').textContent = q.get('file') || '';
+		// One pass, so a later rule never matches inside markup added by an earlier one.
+		document.getElementById('code').innerHTML = code.replace(/\\n/g, '\n').replace(
+			/(\/\/.*$)|('[^']*')|\b(public|function|return|static|class|use|new|fn|where)\b|[\s\S]/gm,
+			function (m, c, s, k) { return c ? '<span class="c">' + esc(c) + '</span>' : s ? '<span class="s">' + esc(s) + '</span>' : k ? '<span class="k">' + k + '</span>' : esc(m); }
+		);
+	} else {
+		document.getElementById('code-card').remove();
+		document.querySelector('.cover').classList.add('no-code');
+	}
+</script>
+</body>
+</html>

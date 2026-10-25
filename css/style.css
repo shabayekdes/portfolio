@@ -705,9 +705,10 @@ header .main-header{z-index: 3;padding-top: 70px;}
 	.lightbox-next{right: calc(50% - 56px);}
 }
 #work .heading .intro{max-width: 520px;}
-.box-content.box-contact{--wave-height: 50px;}
+/* Last section before the footer: a shallow wave so it clears the footer content */
+.box-content.box-contact, body.sub-page .box-content{--wave-height: 50px;}
 @media(max-width:767px) {
-	.box-content.box-contact{--wave-height: 30px;}
+	.box-content.box-contact, body.sub-page .box-content{--wave-height: 30px;}
 }
 
 /* ---------------------------------------------------------------------------- */
@@ -879,6 +880,23 @@ body.sub-page .header-text h1{max-width: 820px;margin: 0 auto;font-size: 42px;fo
 .post-content pre{margin: 24px 0;padding: 18px 20px;overflow-x: auto;font-size: 14px;line-height: 1.6;color: #e6e6e6;background: #1D2027;border: none;border-radius: 12px;}
 .post-content pre code{padding: 0;font-size: inherit;color: inherit;background: none;white-space: pre;word-break: normal;overflow-wrap: normal;}
 .post-content pre{word-break: normal;overflow-wrap: normal;}
+.post-content pre, .post-content pre code{font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Consolas, monospace;font-variant-ligatures: none;}
+/* Rouge syntax highlighting, dark theme to match the code card on post covers */
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .cd{color: #7f8796;font-style: italic;}
+.highlight .cp, .highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .ow{color: #C792EA;}
+.highlight .kt, .highlight .kc, .highlight .nb, .highlight .bp{color: #2DD4BF;}
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc, .highlight .sh, .highlight .sx, .highlight .sr, .highlight .dl{color: #FBBF77;}
+.highlight .se, .highlight .si{color: #F78C6C;}
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo, .highlight .il{color: #F78C6C;}
+.highlight .nc, .highlight .nn, .highlight .ne{color: #FFCB6B;}
+.highlight .nf, .highlight .fm, .highlight .na{color: #82AAFF;}
+.highlight .nv, .highlight .vg, .highlight .vi, .highlight .vc{color: #F07178;}
+.highlight .nt{color: #F07178;}
+.highlight .o{color: #89DDFF;}
+.highlight .p{color: #a6accd;}
+.highlight .gi{color: #2DD4BF;}
+.highlight .gd{color: #F07178;}
+.highlight .err{color: inherit;background: none;}
 .post-content table{width: 100%;margin: 24px 0;font-size: 15px;}
 .post-content th, .post-content td{padding: 10px 12px;border-bottom: 1px solid #e5e7eb;}
 .post-content th{color: #2b2d3f;font-weight: 600;}
